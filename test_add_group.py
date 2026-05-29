@@ -9,10 +9,8 @@ from selenium.webdriver.firefox.options import Options
 
 class TestAddGroup(unittest.TestCase):
     def setUp(self):
-        options = Options()
-        options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
-        self.wd = webdriver.Firefox(options=options, executable_path="C:/WebDriver/geckodriver.exe")
+        self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
 
     def test_add_group(self):
