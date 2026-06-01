@@ -14,18 +14,14 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.add_contact(wd, Contact(first_name="Maria", last_name="Murashkina", email="maria@mail.ru", mobile_phone="+79237600757"))
-        self.to_main_page(wd)
         self.logout(wd)
 
     def test_add_empty_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.add_contact(wd, Contact(first_name="", last_name="", email="", mobile_phone=""))
-        self.to_main_page(wd)
         self.logout(wd)
 
     def logout(self, wd: WebDriver):
@@ -55,11 +51,14 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("mobile").send_keys(contact.mobile_phone)
         # submit contact info
         wd.find_element_by_css_selector("input[name='submit']").click()
+        self.to_main_page(wd)
+
 
     def open_home_page(self, wd: WebDriver):
         wd.get("http://localhost/addressbook/group.php")
 
     def login(self, wd: WebDriver, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
