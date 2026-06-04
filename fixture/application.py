@@ -1,7 +1,6 @@
 from selenium.webdriver.ie.webdriver import WebDriver
 from selenium.webdriver.firefox.webdriver import WebDriver
 
-from fixture.contact import ContactHelper
 from fixture.session import SessionHelper
 from fixture.group import  GroupHelper
 from fixture.contact import ContactHelper
