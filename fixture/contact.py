@@ -33,3 +33,20 @@ class ContactHelper:
         # submit contact info
         wd.find_element_by_css_selector("input[name='submit']").click()
         self.to_main_page()
+
+
+    def edit_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("img[title=Edit]").click()
+        wd.find_element_by_name("firstname").click()
+        wd.find_element_by_name("firstname").clear()
+        wd.find_element_by_name("firstname").send_keys("Edited contact name")
+        wd.find_element_by_name("update").click()
+        self.to_main_page()
+
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("delete").click()
+        self.to_main_page()
