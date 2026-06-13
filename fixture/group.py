@@ -8,6 +8,7 @@ class GroupHelper:
     def create(self, group):
         # init group creation
         wd = self.app.wd
+        self.to_group_page()
         wd.find_element_by_css_selector("input[name='new']").click()
         self.fill_group_form(group)
         # submit group creation
