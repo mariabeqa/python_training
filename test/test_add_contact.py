@@ -3,8 +3,22 @@
 from model.contact import Contact
 
 def test_add_contact(app):
-    app.contact.add(Contact(first_name="Maria", last_name="Murashkina", email="maria@mail.ru", mobile_phone="+79237600757"))
+    app.navigation.open_contacts_page()
+    old_contacts = app.contact.get_contact_list()
+    contact = Contact(first_name="Masha", last_name="Murashkina")
+    app.contact.add(contact)
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) + 1 == len(new_contacts)
+    old_contacts.append(contact)
+    assert sorted(old_contacts, key=Contact.id_or_max) ==  sorted(new_contacts, key=Contact.id_or_max)
 
 
 def test_add_empty_contact(app):
-    app.contact.add(Contact(first_name="", last_name="", email="", mobile_phone=""))
+    app.navigation.open_contacts_page()
+    old_contacts = app.contact.get_contact_list()
+    contact = Contact(first_name="", last_name="")
+    app.contact.add(contact)
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) + 1 == len(new_contacts)
+    old_contacts.append(contact)
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
