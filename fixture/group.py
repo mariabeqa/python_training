@@ -1,3 +1,5 @@
+from tokenize import group
+
 from model.group import Group
 
 class GroupHelper:
@@ -15,6 +17,7 @@ class GroupHelper:
         # submit group creation
         wd.find_element_by_name("submit").click()
         self.to_group_page()
+        self.group_cache = None
 
 
     def to_group_page(self):
@@ -37,6 +40,7 @@ class GroupHelper:
         self.fill_group_form(new_group_data)
         # submit modification
         wd.find_element_by_name("update").click()
+        self.group_cache = None
 
 
     def delete_first_group(self):
@@ -44,6 +48,7 @@ class GroupHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_name("delete").click()
         self.to_group_page()
+        self.group_cache = None
 
 
     def change_field_value(self, field_name, text):
@@ -65,13 +70,15 @@ class GroupHelper:
         self.to_group_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    group_cache = None
 
     def get_group_list(self):
-        wd = self.app.wd
-        self.to_group_page()
-        groups = []
-        for element in wd.find_elements_by_css_selector("span.group"):
-            text = element.text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            groups.append(Group(name=text, id=id))
-        return groups
+        if self.group_cache is None:
+            wd = self.app.wd
+            self.to_group_page()
+            self.group_cache = []
+            for element in wd.find_elements_by_css_selector("span.group"):
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.group_cache.append(Group(name=text, id=id))
+        return list(self.group_cache)
