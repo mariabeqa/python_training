@@ -25,9 +25,12 @@ class ContactHelper:
 
 
     def edit_first_contact(self, new_contact_data):
+        self.edit_some_contact(0, new_contact_data)
+
+
+    def edit_some_contact(self, index, new_contact_data ):
         wd = self.app.wd
-        self.select_first_contact()
-        wd.find_element_by_css_selector("img[title=Edit]").click()
+        self.edit_contact_by_index(index)
         self.fill_contact_form(new_contact_data)
         wd.find_element_by_name("update").click()
         self.to_main_page()
@@ -35,16 +38,29 @@ class ContactHelper:
 
 
     def delete_first_contact(self):
+        self.delete_some_contact(0)
+
+
+    def delete_some_contact(self, index):
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         wd.find_element_by_name("delete").click()
         self.to_main_page()
         self.contact_cache = None
 
 
     def select_first_contact(self):
+        self.select_contact_by_index(0)
+
+
+    def select_contact_by_index(self, index):
         wd = self.app.wd
-        wd.find_element_by_css_selector("input[name='selected[]']").click()
+        wd.find_elements_by_css_selector("input[name='selected[]']")[index].click()
+
+
+    def edit_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_css_selector("img[title=Edit]")[index].click()
 
 
     def change_field_value(self, field_name, text):
