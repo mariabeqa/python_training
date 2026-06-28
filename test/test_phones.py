@@ -21,7 +21,7 @@ def test_phones_on_contact_view_page(app):
     assert contact_from_view_page.work_phone == contact_from_edit_page.work_phone
 
 def clear(s):
-    return re.sub("[() -][',]", "", s)
+    return re.sub("[() -]", "", s)
 
 
 def merge_homes_like_on_home_page(contact):

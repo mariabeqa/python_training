@@ -6,15 +6,15 @@ class Contact:
                  address=None, all_emails_from_home_page=None):
         self.first_name = first_name
         self.last_name = last_name
-        self.email = email,
-        self.email2 = email2,
-        self.email3 = email3,
+        self.email = email
+        self.email2 = email2
+        self.email3 = email3
         self.home_phone = home_phone
         self.mobile_phone = mobile_phone
         self.work_phone = work_phone
         self.id = id
         self.all_phones_from_home_page = all_phones_from_home_page
-        self.address = address,
+        self.address = address
         self.all_emails_from_home_page = all_emails_from_home_page
 
 
