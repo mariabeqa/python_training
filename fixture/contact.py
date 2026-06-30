@@ -87,7 +87,12 @@ class ContactHelper:
         self.change_field_value("firstname", contact.first_name)
         self.change_field_value("lastname", contact.last_name)
         self.change_field_value("email", contact.email)
+        self.change_field_value("email2", contact.email2)
+        self.change_field_value("email3", contact.email3)
+        self.change_field_value("home", contact.mobile_phone)
         self.change_field_value("mobile", contact.mobile_phone)
+        self.change_field_value("work", contact.mobile_phone)
+        self.change_field_value("address", contact.address)
 
 
     def count(self):
