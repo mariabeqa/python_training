@@ -1,0 +1,62 @@
+[
+  {
+    "py/object": "model.contact.Contact",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "email2": "",
+    "email3": "",
+    "home_phone": "",
+    "mobile_phone": "",
+    "work_phone": "",
+    "id": null,
+    "all_phones_from_home_page": null,
+    "address": "",
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "first_name": "AYbxlSVpOPm",
+    "last_name": "ZrhMLfp",
+    "email": "4Hd7ojXhmsk@mail.ru",
+    "email2": "0kGfjufBR8IoQEE@gmail.com",
+    "email3": "gHOf0Tm4N@yandex.com",
+    "home_phone": "+78571018812",
+    "mobile_phone": "+78799624225",
+    "work_phone": "+71293595806",
+    "id": null,
+    "all_phones_from_home_page": null,
+    "address": "574246 \u0433. \u041e\u043c\u0441\u043a, \u0443\u043b \u041b\u0435\u043d\u0438\u043d\u0430, \u0434. 16, \u043a\u0432. 84",
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "first_name": "fBrH",
+    "last_name": "CjnoNmvu",
+    "email": "jUB@mail.ru",
+    "email2": "F8YbAKUq1h@gmail.com",
+    "email3": "HA37xGQCt4htdRj2r@yandex.com",
+    "home_phone": "+76518602198",
+    "mobile_phone": "+79813452399",
+    "work_phone": "+72305816894",
+    "id": null,
+    "all_phones_from_home_page": null,
+    "address": "036684 \u0433. \u041e\u043c\u0441\u043a, \u0443\u043b \u041b\u0435\u043d\u0438\u043d\u0430, \u0434. 15, \u043a\u0432. 24",
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "first_name": "ZIQlIZinwKSFuBxa",
+    "last_name": "gdXsjgNF",
+    "email": "YOr5RhgWpzK3oW3@mail.ru",
+    "email2": "Orx1zXlLfy@gmail.com",
+    "email3": "QOFbMTESo5pHI6m9cp@yandex.com",
+    "home_phone": "+70399835812",
+    "mobile_phone": "+70190120904",
+    "work_phone": "+74847082475",
+    "id": null,
+    "all_phones_from_home_page": null,
+    "address": "096352 \u0433. \u041e\u043c\u0441\u043a, \u0443\u043b \u041b\u0435\u043d\u0438\u043d\u0430, \u0434. 77, \u043a\u0432. 34",
+    "all_emails_from_home_page": null
+  }
+]
