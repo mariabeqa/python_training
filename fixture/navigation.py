@@ -9,7 +9,7 @@ class NavigationHelper:
 
     def open_login_page(self):
         wd = self.app.wd
-        wd.get("http://localhost/addressbook/group.php")
+        wd.get(self.app.base_url)
 
 
     def open_contacts_page(self):
