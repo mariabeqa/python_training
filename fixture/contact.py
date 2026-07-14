@@ -40,6 +40,15 @@ class ContactHelper:
         self.contact_cache = None
 
 
+    def edit_contact_by_id(self, id, contact):
+        wd = self.app.wd
+        self.select_contact_to_edit(id)
+        self.fill_contact_form(contact)
+        wd.find_element(By.NAME, "update").click()
+        self.to_main_page()
+        self.contact_cache = None
+
+
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
         self.to_main_page()
@@ -59,6 +68,12 @@ class ContactHelper:
         self.to_main_page()
         self.contact_cache = None
 
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.select_contact_by_id(id)
+        wd.find_element(By.NAME, "delete").click()
+        self.to_main_page()
+        self.contact_cache = None
 
     def select_first_contact(self):
         self.select_contact_by_index(0)
@@ -69,12 +84,23 @@ class ContactHelper:
         wd.find_elements(By.CSS_SELECTOR, "input[name='selected[]']")[index].click()
 
 
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element(By.CSS_SELECTOR, "input[value='%s']" % id).click()
+
+
     def edit_contact_by_index(self, index):
         wd = self.app.wd
         self.to_main_page()
         row = wd.find_elements(By.NAME, "entry")[index]
         cell = row.find_elements(By.TAG_NAME, "td")[7]
         cell.find_element(By.TAG_NAME, "a").click()
+
+
+    def select_contact_to_edit(self, id):
+        wd = self.app.wd
+        self.to_main_page()
+        wd.find_element(By.XPATH, "//a[@href='edit.php?id=%s']" % id).click()
 
 
     def change_field_value(self, field_name, text):
