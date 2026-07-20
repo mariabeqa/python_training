@@ -1,4 +1,6 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 
 from model.contact import Contact
 import re
@@ -191,3 +193,28 @@ class ContactHelper:
             mobile_phone=mobilephone,
             work_phone=workphone,
         )
+
+
+    def add_contact_to_group(self, contact, group):
+        wd = self.app.wd
+        self.select_contact_by_id(contact.id)
+        wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        dropdown = wd.find_element(By.CSS_SELECTOR, "select[name='to_group']")
+        ActionChains(wd).move_to_element(dropdown).perform()
+        select_group_dropdown = Select(dropdown)
+        select_group_dropdown.select_by_value(group.id)
+        wd.find_element(By.CSS_SELECTOR, "input[name='add']").click()
+
+
+    def select_group_by_id(self, group):
+        wd = self.app.wd
+        dropdown = wd.find_element(By.CSS_SELECTOR, "select[name='group']")
+        select_group_dropdown = Select(dropdown)
+        select_group_dropdown.select_by_value(group.id)
+
+
+    def remove_contact_from_group(self, contact, group):
+        wd = self.app.wd
+        self.select_group_by_id(group)
+        self.select_contact_by_id(contact.id)
+        wd.find_element(By.CSS_SELECTOR, "input[name='delete']").click()
