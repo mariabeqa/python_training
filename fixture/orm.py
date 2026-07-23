@@ -78,3 +78,13 @@ class ORMFixture:
         ))
 
 
+    @db_session
+    def get_contacts_without_any_group(self):
+        return list(self.convert_contacts_to_model(
+            select(
+                c for c in ORMFixture.ORMContact if not exists(g for g in c.groups)
+            )
+        ))
+
+
+
