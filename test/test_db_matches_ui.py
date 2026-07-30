@@ -1,6 +1,9 @@
+import pytest
+
 from model.group import Group
 from timeit import timeit
 
+@pytest.mark.skip(reason="Тест был переделан для измерения времени загрузки через UI и <L")
 def test_group_list(app, db):
     print(timeit(lambda: app.group.get_group_list(), number=1))
     def clean(group):
